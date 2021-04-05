@@ -1,3 +1,5 @@
+using BLL;
+using DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -10,8 +12,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using WebApi.ActionFilters;
 using WebApi.Extensions;
 
 namespace WebApi
@@ -30,11 +35,49 @@ namespace WebApi
 		{
 			services.ConfigureCors();
 			services.ConfigureIISIntegration();
+			services.ConfigureLoggerService();
+			services.ConfigureSqlContext(Configuration);
+			services.AddScoped<ValidationFilterAttribute>();
+			services.AddAuthentication();
+			services.ConfigureIdentity();
+			services.ConfigureJWT(Configuration);
+			services.ConfigureUnitOfWork();
+			services.ConfigureBLL();
+			services.AddAutoMapper(typeof(AutoMapperProfile));
 
 			services.AddControllers();
-			services.AddSwaggerGen(c =>
+			services.AddSwaggerGen(s =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
+				s.SwaggerDoc("v1", new OpenApiInfo
+				{
+
+				});
+
+				s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					Description = "JWT Authorization header using the Bearer scheme (Example: 'Bearer 12345abcdef')",
+					Name = "Authorization",
+					In = ParameterLocation.Header,
+					Type = SecuritySchemeType.ApiKey,
+					Scheme = "Bearer"
+				});
+
+				s.AddSecurityRequirement(new OpenApiSecurityRequirement{
+				{
+					new OpenApiSecurityScheme
+					{
+						Reference = new OpenApiReference
+						{
+							Type = ReferenceType.SecurityScheme,
+							Id = "Bearer"
+						}
+					},
+					Array.Empty<string>()
+				}
+				});
+				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+				s.IncludeXmlComments(xmlPath);
 			});
 		}
 
@@ -60,6 +103,8 @@ namespace WebApi
 			});
 
 			app.UseRouting();
+
+			app.UseAuthentication();
 
 			app.UseAuthorization();
 

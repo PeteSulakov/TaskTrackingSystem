@@ -1,0 +1,2 @@
+2021-03-26 18:41:25.9479 ERROR Object sent from client is null. Controller: Tasks, action: Delete
+2021-03-26 18:42:59.8843 ERROR Object sent from client is null. Controller: Tasks, action: Delete
