@@ -1,1 +1,7 @@
 2021-04-12 12:44:59.5357 WARN Authenticate: Authentication failed. Wrong user name or password.
+2021-04-12 14:21:29.8127 WARN Authenticate: Authentication failed. Wrong user name or password.
+2021-04-12 15:10:54.7514 INFO Created a product with id = 5
+2021-04-12 15:47:00.7498 WARN Authenticate: Authentication failed. Wrong user name or password.
+2021-04-12 15:48:13.1747 INFO Created project with id = 6.
+2021-04-12 15:49:50.6969 INFO Updated project with id = 6.
+2021-04-12 15:51:42.0029 INFO Deleted project with id = 6.

@@ -3,6 +3,7 @@ using BLL.Services;
 using DAL;
 using DAL.Entities;
 using DAL.Interfaces;
+using DAL.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -11,11 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using WebApi.Infrastructure;
 
 namespace WebApi.Extensions
 {
@@ -36,7 +33,7 @@ namespace WebApi.Extensions
 			services.Configure<IISOptions>(options => { });
 
 		public static void ConfigureLoggerService(this IServiceCollection services) =>
-			services.AddScoped<ILoggerManager, LoggerManager>();
+			services.AddTransient<ILoggerManager, LoggerManager>();
 
 		public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
 			services.AddDbContext<TaskDbContext>(opts =>
@@ -85,17 +82,17 @@ namespace WebApi.Extensions
 		}
 
 		public static void ConfigureUnitOfWork(this IServiceCollection services) =>
-			services.AddScoped<IUnitOfWork, UnitOfWork>();
+			services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 		public static void ConfigureBLL(this IServiceCollection services)
 		{
-			services.AddScoped<IAuthenticationService, AuthenticationService>();
-			services.AddScoped<ITaskService, TaskService>();
-			services.AddScoped<IProjectService, ProjectService>();
-			services.AddScoped<IStatusService, StatusService>();
-			services.AddScoped<IStatisticService, StatisticService>();
-			services.AddScoped<IEmailService, EmailService>();
-			services.AddScoped<IAdminService, AdminService>();
+			services.AddTransient<IAuthenticationService, AuthenticationService>();
+			services.AddTransient<ITaskService, TaskService>();
+			services.AddTransient<IProjectService, ProjectService>();
+			services.AddTransient<IStatusService, StatusService>();
+			services.AddTransient<IStatisticService, StatisticService>();
+			services.AddTransient<IEmailService, EmailService>();
+			services.AddTransient<IAdminService, AdminService>();
 		}
 	}
 }

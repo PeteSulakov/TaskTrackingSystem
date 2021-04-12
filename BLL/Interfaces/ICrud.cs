@@ -12,7 +12,7 @@ namespace BLL.Interfaces
 	{
 		Task<IEnumerable<TReadDto>> GetAllAsync();
 		Task<TReadDto> GetByIdAsync(int id, string userId);
-		Task<TReadDto> AddAsync(TCreateDto model);
+		Task<TReadDto> AddAsync(TCreateDto model, string userId);
 		Task<TReadDto> UpdateAsync(int id, string userId, TUpdateDto model);
 		Task<TReadDto> DeleteByIdAsync(int id, string userId);
 	}

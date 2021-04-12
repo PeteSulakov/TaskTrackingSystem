@@ -89,14 +89,18 @@ namespace WebApi.Controllers
 		{
 			try
 			{
-				var email = taskDto.DeveloperEmail;
-				var addedTask = await _taskService.AddAsync(taskDto);
-				await _emailService.SendEmailAsync(email, taskDto.Title, taskDto.Description);
+				var managerId = _userManager.GetUserId(User);
+				var addedTask = await _taskService.AddAsync(taskDto, managerId);
+				await _emailService.SendEmailAsync(taskDto.DeveloperEmail, taskDto.Title, taskDto.Description);
 				return CreatedAtAction(nameof(Add), addedTask);
 			}
 			catch(TaskException ex)
 			{
-				return NotFound(ex.Message);
+				return ex.StatusCode switch
+				{
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
+					_ => NotFound(ex.Message)
+				};
 			}
 		}
 
@@ -153,7 +157,7 @@ namespace WebApi.Controllers
 		/// <param name="statusId"></param>
 		/// <returns></returns>
 		[HttpPut("{taskId}/status/{statusId}")]
-		public async Task<ActionResult<ReadProjectDto>> UpdateTaskStatusToStarted(int taskId, int statusId)
+		public async Task<ActionResult<ReadProjectDto>> UpdateTaskStatus(int taskId, int statusId)
 		{
 			var developerId = _userManager.GetUserId(User);
 			try

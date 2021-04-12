@@ -37,7 +37,7 @@ namespace BLL.Services
 									?.ThenInclude(t=>t.Status)
 									.FirstAsync();
 
-			if (project.Tasks.Count == 0)
+			if (!project.Tasks.Any())
 				throw new TaskException($"Project with id = {projectId} has no tasks.", HttpStatusCode.NotFound);
 
 			var finishedTasksIds = project.Tasks.Where(t => t.StatusId == 3).Select(t => t.Id);

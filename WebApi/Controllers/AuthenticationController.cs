@@ -1,15 +1,9 @@
-﻿using AutoMapper;
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using BLL.Models;
-using DAL.Entities;
-using Microsoft.AspNetCore.Identity;
+using DAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApi.ActionFilters;
-using WebApi.Infrastructure;
 
 namespace WebApi.Controllers
 {

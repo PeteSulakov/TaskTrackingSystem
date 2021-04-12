@@ -48,7 +48,7 @@ namespace WebApi.Controllers
 		{
 			var managerId = _userManager.GetUserId(User);
 			var projects = await _projectService.GetProjectsByManagerIdAsync(managerId);
-			if (projects == null)
+			if (!projects.Any())
 				return NotFound("Can't find any projects");
 			return Ok(projects);
 		}
@@ -112,8 +112,7 @@ namespace WebApi.Controllers
 		public async Task<ActionResult<ReadProjectDto>> Add([FromBody] CreateProjectDto projectDto)
 		{
 			var managerId = _userManager.GetUserId(User);
-			projectDto.ManagerId = managerId;
-			return Ok(await _projectService.AddAsync(projectDto));
+			return Ok(await _projectService.AddAsync(projectDto, managerId));
 		}
 
 		/// <summary>

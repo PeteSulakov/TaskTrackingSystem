@@ -18,27 +18,31 @@ namespace BLL.Services
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
 		private readonly UserManager<User> _userManager;
+		private readonly ILoggerManager _logger;
 
-		public TaskService(IUnitOfWork uow, IMapper mapper, UserManager<User> userManager)
+		public TaskService(IUnitOfWork uow, IMapper mapper, UserManager<User> userManager, ILoggerManager logger)
 		{
 			_unitOfWork = uow;
 			_mapper = mapper;
 			_userManager = userManager;
+			_logger = logger;
 		}
 
-		public async System.Threading.Tasks.Task<ReadTaskDto> AddAsync(CreateTaskDto model)
+		public async System.Threading.Tasks.Task<ReadTaskDto> AddAsync(CreateTaskDto model, string userId)
 		{
-			model.StatusId = 1;
 			var developer = await _userManager.FindByEmailAsync(model.DeveloperEmail);
-			var project = await _unitOfWork.ProjectRepository.GetByIdAsync(model.ProjectId);
+			var project = await _unitOfWork.ProjectRepository.GetProjectByIdWithDetailsAsync(model.ProjectId, false);
 
 			if (developer == null)
 				throw new TaskException($"Developer with email {model.DeveloperEmail} not found!", HttpStatusCode.NotFound);
 			if (project == null)
 				throw new TaskException($"Project with id = {model.ProjectId} not found!", HttpStatusCode.NotFound);
+			if (project.ManagerId != userId)
+				throw new TaskException($"Don't have permission to add task to project with id = {model.ProjectId}", HttpStatusCode.Forbidden);
 
-			model.DeveloperEmail = developer.Id;
 			var task = _mapper.Map<Task>(model);
+			task.DeveloperId = developer.Id;
+			task.StatusId = 1;
 			await _unitOfWork.TaskRepostitory.AddAsync(task);
 			await _unitOfWork.SaveAsync();
 
@@ -49,6 +53,7 @@ namespace BLL.Services
 								.Include(t => t.Project)
 								.Include(t => t.Status)
 								.FirstOrDefaultAsync();
+			_logger.LogInfo($"Created task with id = {addedTask.Id}.");
 			return _mapper.Map<ReadTaskDto>(addedTask);
 		}
 
@@ -67,6 +72,7 @@ namespace BLL.Services
 
 			await _unitOfWork.TaskRepostitory.DeleteAsync(task);
 			await _unitOfWork.SaveAsync();
+			_logger.LogInfo($"Deleted task with id = {task.Id}.");
 			return _mapper.Map<ReadTaskDto>(task);
 		}
 
@@ -124,18 +130,25 @@ namespace BLL.Services
 			await _unitOfWork.SaveAsync();
 
 			var updatedTask = await _unitOfWork.TaskRepostitory.GetTaskByIdWithDetailsAsync(id, false);
+			_logger.LogInfo($"Deleted task with id = {updatedTask.Id}.");
 			return _mapper.Map<ReadTaskDto>(updatedTask);
 		}
 
 		public async System.Threading.Tasks.Task<ReadTaskDto> UpdateTaskStatus(int taskId, int statusId, string developerId)
 		{
 			var task = await _unitOfWork.TaskRepostitory.GetTaskByIdWithDetailsAsync(taskId, true);
+
+			if(_unitOfWork.StatusRepository.GetByIdAsync(statusId) == null)
+				throw new TaskException($"Status = {statusId} not found.", HttpStatusCode.NotFound);
 			if (task == null)
 				throw new TaskException($"Task with id = {taskId} not found.", HttpStatusCode.NotFound);
 			if (task.DeveloperId != developerId)
 				throw new TaskException($"Don't have permission to edit this task status.", HttpStatusCode.Forbidden);
-
 			task.StatusId = statusId;
+			if(statusId == 3)
+			{
+				task.CompletionDate = DateTime.Now;
+			}
 			await _unitOfWork.SaveAsync();
 			return _mapper.Map<ReadTaskDto>(task);
 		}

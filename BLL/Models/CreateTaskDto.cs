@@ -23,7 +23,5 @@ namespace BLL.Models
 		public int ProjectId { get; set; }
 
 		public string DeveloperEmail { get; set; }
-
-		public int StatusId { get; set; }
 	}
 }

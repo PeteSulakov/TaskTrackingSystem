@@ -1,10 +1,10 @@
-﻿using NLog;
+﻿using DAL.Interfaces;
+using NLog;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace WebApi.Infrastructure
+namespace DAL.Repositories
 {
 	public class LoggerManager : ILoggerManager
 	{

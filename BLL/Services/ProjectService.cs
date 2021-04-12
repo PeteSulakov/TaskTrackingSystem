@@ -17,23 +17,27 @@ namespace BLL.Services
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
+		private readonly ILoggerManager _logger;
 
-		public ProjectService(IUnitOfWork uow, IMapper mapper)
+		public ProjectService(IUnitOfWork uow, IMapper mapper, ILoggerManager logger)
 		{
 			_unitOfWork = uow;
 			_mapper = mapper;
+			_logger = logger;
 		}
 
-		public async Task<ReadProjectDto> AddAsync(CreateProjectDto model)
+		public async Task<ReadProjectDto> AddAsync(CreateProjectDto model, string userId)
 		{
 			var project = _mapper.Map<DAL.Entities.Project>(model);
+			project.ManagerId = userId;
 			await _unitOfWork.ProjectRepository.AddAsync(project);
 			await _unitOfWork.SaveAsync();
 			var addedProject = await _unitOfWork.ProjectRepository
-									.FindByCondition(p => p.Title == model.Title && p.ManagerId == model.ManagerId, false)
+									.FindByCondition(p => p.Title == model.Title && p.ManagerId == userId, false)
 									.Include(p => p.Manager)
 									.Include(p => p.Tasks)
 									.FirstOrDefaultAsync();
+			_logger.LogInfo($"Created project with id = {addedProject.Id}.");
 			return _mapper.Map<ReadProjectDto>(addedProject);
 		}
 
@@ -47,6 +51,7 @@ namespace BLL.Services
 
 			await _unitOfWork.ProjectRepository.DeleteAsync(project);
 			await _unitOfWork.SaveAsync();
+			_logger.LogInfo($"Deleted project with id = {project.Id}.");
 			return _mapper.Map<ReadProjectDto>(project);
 		}
 
@@ -88,6 +93,7 @@ namespace BLL.Services
 			await _unitOfWork.SaveAsync();
 
 			var updatedProject = await _unitOfWork.ProjectRepository.GetProjectByIdWithDetailsAsync(id, false);
+			_logger.LogInfo($"Updated project with id = {project.Id}.");
 			return _mapper.Map<ReadProjectDto>(updatedProject);
 		}
 

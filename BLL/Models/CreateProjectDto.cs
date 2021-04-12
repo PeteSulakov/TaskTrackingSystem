@@ -14,6 +14,5 @@ namespace BLL.Models
 		[Required(ErrorMessage = "StartDate of project is a required field.")]
 		public DateTime StartDate { get; set; }
 		public DateTime EndDate { get; set; }
-		public string ManagerId { get; set; }
 	}
 }

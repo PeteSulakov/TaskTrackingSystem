@@ -17,11 +17,13 @@ namespace BLL.Services
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
+		private readonly ILoggerManager _logger;
 
-		public StatusService(IUnitOfWork uow, IMapper mapper)
+		public StatusService(IUnitOfWork uow, IMapper mapper, ILoggerManager logger)
 		{
 			_unitOfWork = uow;
 			_mapper = mapper;
+			_logger = logger;
 		}
 
 		public async Task<ReadStatusDto> AddAsync(CreateStatusDto model)
@@ -38,6 +40,7 @@ namespace BLL.Services
 			var addedStatus = await _unitOfWork.StatusRepository.FindByCondition(s => s.Title == model.Title, false)
 																.Include(s=>s.Tasks)
 																.FirstOrDefaultAsync();
+			_logger.LogInfo($"Created status with id = {addedStatus.Id}.");
 			return _mapper.Map<ReadStatusDto>(addedStatus);
 		}
 
@@ -48,6 +51,7 @@ namespace BLL.Services
 				throw new TaskException($"Status with id = {id} not found.", HttpStatusCode.NotFound);
 			await _unitOfWork.StatusRepository.DeleteAsync(status);
 			await _unitOfWork.SaveAsync();
+			_logger.LogInfo($"Deleted status with id = {status.Id}.");
 			return _mapper.Map<ReadStatusDto>(status);
 		}
 
@@ -74,6 +78,7 @@ namespace BLL.Services
 			status.Title = model.Title;
 			await _unitOfWork.StatusRepository.UpdateAsync(status);
 			await _unitOfWork.SaveAsync();
+			_logger.LogInfo($"Updated status with id = {id}");
 			return _mapper.Map<ReadStatusDto>(status);
 		}
 	}
