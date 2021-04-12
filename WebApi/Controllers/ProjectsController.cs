@@ -71,7 +71,7 @@ namespace WebApi.Controllers
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}
@@ -96,7 +96,7 @@ namespace WebApi.Controllers
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}
@@ -156,7 +156,7 @@ namespace WebApi.Controllers
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}

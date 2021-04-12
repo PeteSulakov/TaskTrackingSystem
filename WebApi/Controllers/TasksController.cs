@@ -48,7 +48,7 @@ namespace WebApi.Controllers
 		{
 			var developerId = _userManager.GetUserId(User);
 			var tasks = await _taskService.GetTasksByDeveloperIdAsync(developerId);
-			if (tasks == null)
+			if (!tasks.Any())
 				return NotFound("Can't find any tasks.");
 			return Ok(tasks);
 		}
@@ -65,14 +65,14 @@ namespace WebApi.Controllers
 			var developerId = _userManager.GetUserId(User);
 			try
 			{
-				var task = await _taskService.DeleteByIdAsync(taskId, developerId);
+				var task = await _taskService.GetByIdAsync(taskId, developerId);
 				return Ok(task);
 			}
 			catch (TaskException ex)
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}
@@ -140,7 +140,7 @@ namespace WebApi.Controllers
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}
@@ -165,7 +165,7 @@ namespace WebApi.Controllers
 			{
 				return ex.StatusCode switch
 				{
-					HttpStatusCode.Forbidden => Forbid(ex.Message),
+					HttpStatusCode.Forbidden => StatusCode(403, ex.Message),
 					_ => NotFound(ex.Message)
 				};
 			}

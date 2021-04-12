@@ -1032,3 +1032,149 @@
 2021-03-29 19:17:00.8899 Trace Opening E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-03-29_logfile.txt with allowFileSharedWriting=False
 2021-03-29 19:17:03.5419 Trace Opening E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-03-29_logfile.txt with allowFileSharedWriting=False
 2021-03-29 19:17:06.0687 Trace Opening E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-03-29_logfile.txt with allowFileSharedWriting=False
+2021-04-12 12:44:58.3239 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2021-04-12 12:44:58.7321 Debug Found assembly location directory: 'E:\' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2021-04-12 12:44:58.7358 Debug Search for auto loading files in location: E:\
+2021-04-12 12:44:58.7358 Debug Found assembly location directory: 'E:\' (WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2021-04-12 12:44:58.7358 Debug Auto loading based on AppDomain-BaseDirectory found location: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0
+2021-04-12 12:44:58.7358 Debug Search for auto loading files in location: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0
+2021-04-12 12:44:58.7358 Debug Start auto loading, location: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0
+2021-04-12 12:44:58.7566 Info Auto loading assembly file: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0\NLog.Extensions.Logging.dll
+2021-04-12 12:44:58.7566 Info Loading assembly file: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0\NLog.Extensions.Logging.dll
+2021-04-12 12:44:59.1432 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.7.1.1487. Product version: 1.7.1+d96c28dcde7476268e67387aecfb6e673b4a423d. GlobalAssemblyCache: False
+2021-04-12 12:44:59.1432 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2021-04-12 12:44:59.1432 Info Auto loading assembly file: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0\NLog.Extensions.Logging.dll succeeded!
+2021-04-12 12:44:59.1588 Trace Assembly 'Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-04-12 12:44:59.1588 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-04-12 12:44:59.1588 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2021-04-12 12:44:59.1725 Debug Auto loading done
+2021-04-12 12:44:59.1725 Info Message Template Auto Format enabled
+2021-04-12 12:44:59.2406 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2406 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-12 12:44:59.2601 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-04-12 12:44:59.2601 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-04-12 12:44:59.2601 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2601 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.2665 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2665 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-12 12:44:59.2665 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-12 12:44:59.2665 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-12 12:44:59.2665 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.2665 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.2665 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2665 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-04-12 12:44:59.2665 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2665 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-12 12:44:59.2924 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2021-04-12 12:44:59.2924 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt'
+2021-04-12 12:44:59.2924 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2924 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-12 12:44:59.2982 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2021-04-12 12:44:59.2982 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2982 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-12 12:44:59.2982 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-04-12 12:44:59.2982 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-04-12 12:44:59.2982 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2982 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.2982 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2982 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-12 12:44:59.2982 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-12 12:44:59.2982 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-12 12:44:59.2982 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.2982 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.2982 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.2982 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-12 12:44:59.2982 Info Adding target FileTarget(Name=logfile)
+2021-04-12 12:44:59.2982 Debug Registered target logfile: NLog.Targets.FileTarget
+2021-04-12 12:44:59.2982 Trace ParseRulesElement
+2021-04-12 12:44:59.3451 Debug Watching path 'E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0' filter 'NLog.config' for changes.
+2021-04-12 12:44:59.3451 Debug --- NLog configuration dump ---
+2021-04-12 12:44:59.3451 Debug Targets:
+2021-04-12 12:44:59.3451 Debug File Target[logfile]
+2021-04-12 12:44:59.3451 Debug Rules:
+2021-04-12 12:44:59.3451 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2021-04-12 12:44:59.3451 Debug --- End of NLog configuration dump ---
+2021-04-12 12:44:59.3645 Trace FindReachableObject<System.Object>:
+2021-04-12 12:44:59.3645 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2021-04-12 12:44:59.3645 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2021-04-12 12:44:59.3645 Trace  Scanning FileTarget 'File Target[logfile]'
+2021-04-12 12:44:59.3645 Trace   Scanning Property FileName ''E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt'' NLog.Layouts
+2021-04-12 12:44:59.3645 Trace   Scanning SimpleLayout ''E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt''
+2021-04-12 12:44:59.3645 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.3645 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.3645 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-12 12:44:59.3645 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.3645 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-04-12 12:44:59.3645 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-04-12 12:44:59.3645 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.3645 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-12 12:44:59.3645 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.3645 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-12 12:44:59.3645 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-12 12:44:59.3645 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-12 12:44:59.3754 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.3754 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.3754 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.3754 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-12 12:44:59.3754 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2021-04-12 12:44:59.3754 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2021-04-12 12:44:59.3754 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2021-04-12 12:44:59.3754 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\WebApi\bin\Debug\net5.0\NLog.config
+2021-04-12 12:44:59.3917 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2021-04-12 12:44:59.3917 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2021-04-12 12:44:59.3917 Trace Initializing Layout Renderer: ${message}
+2021-04-12 12:44:59.4063 Trace Initializing Layout Renderer: ${literal}
+2021-04-12 12:44:59.4063 Trace Initializing Layout Renderer: ${level}
+2021-04-12 12:44:59.4063 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2021-04-12 12:44:59.4382 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.4382 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-12 12:44:59.4382 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.4382 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.4382 Trace Initializing Layout Renderer: ${uppercase}
+2021-04-12 12:44:59.4541 Trace Initializing Layout Renderer: ${literal}
+2021-04-12 12:44:59.4541 Trace Initializing Layout Renderer: ${longdate}
+2021-04-12 12:44:59.4541 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2021-04-12 12:44:59.4541 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.4541 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-04-12 12:44:59.4541 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.4541 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-04-12 12:44:59.4541 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.4541 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-04-12 12:44:59.4541 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-04-12 12:44:59.4541 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-04-12 12:44:59.4541 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.4541 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-04-12 12:44:59.4541 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.4541 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-04-12 12:44:59.4681 Trace Initializing Layout Renderer: ${literal}
+2021-04-12 12:44:59.4681 Trace Initializing Layout Renderer: ${shortdate}
+2021-04-12 12:44:59.4681 Trace Initializing Layout Renderer: ${literal}
+2021-04-12 12:44:59.4681 Trace Initializing 'E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt'
+2021-04-12 12:44:59.4681 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-04-12 12:44:59.4681 Trace Scanning SimpleLayout ''E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt''
+2021-04-12 12:44:59.4681 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-04-12 12:44:59.4681 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.4681 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-04-12 12:44:59.4681 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-04-12 12:44:59.4681 Trace Initializing File Target[logfile]
+2021-04-12 12:44:59.4681 Trace FindReachableObject<NLog.Layouts.Layout>:
+2021-04-12 12:44:59.4681 Trace Scanning FileTarget 'File Target[logfile]'
+2021-04-12 12:44:59.4840 Trace  Scanning Property FileName ''E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt'' NLog.Layouts
+2021-04-12 12:44:59.4840 Trace  Scanning SimpleLayout ''E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\${shortdate}_logfile.txt''
+2021-04-12 12:44:59.4840 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-04-12 12:44:59.4840 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-04-12 12:44:59.4840 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2021-04-12 12:44:59.4840 Trace File Target[logfile] has 2 layouts
+2021-04-12 12:44:59.4840 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2021-04-12 12:44:59.5018 Info Configuration initialized.
+2021-04-12 12:44:59.5018 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.8.12686. Product version: 4.7.8+1a738710a3e2974972abafd94d9df40f6b58035f. GlobalAssemblyCache: False
+2021-04-12 12:44:59.5018 Debug Targets for WebApi.Infrastructure.LoggerManager by level:
+2021-04-12 12:44:59.5154 Debug Trace =>
+2021-04-12 12:44:59.5154 Debug Debug => logfile
+2021-04-12 12:44:59.5154 Debug Info => logfile
+2021-04-12 12:44:59.5154 Debug Warn => logfile
+2021-04-12 12:44:59.5154 Debug Error => logfile
+2021-04-12 12:44:59.5154 Debug Fatal => logfile
+2021-04-12 12:44:59.6138 Debug FileTarget(Name=logfile): Preparing for new file 'E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-04-12_logfile.txt'
+2021-04-12 12:44:59.6440 Debug Creating file appender: E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-04-12_logfile.txt
+2021-04-12 12:44:59.6563 Trace Opening E:\Projects C#\WinterEpamRepos\TaskTrackingSystem\TaskTrackingSystem\logs\2021-04-12_logfile.txt with allowFileSharedWriting=False
