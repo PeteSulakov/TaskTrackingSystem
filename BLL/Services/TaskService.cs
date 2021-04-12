@@ -78,7 +78,7 @@ namespace BLL.Services
 
 		public async System.Threading.Tasks.Task<IEnumerable<ReadTaskDto>> GetAllAsync()
 		{
-			var tasks = await _unitOfWork.TaskRepostitory.GetAllTasksAsync(false);
+			var tasks = await _unitOfWork.TaskRepostitory.GetAllTasksWithDetailsAsync(false);
 			return _mapper.Map<IEnumerable<ReadTaskDto>>(tasks);
 		}
 

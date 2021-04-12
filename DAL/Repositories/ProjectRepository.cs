@@ -15,11 +15,6 @@ namespace DAL.Repositories
 			: base (context)
 		{ }
 
-		public async Task<IEnumerable<Project>> GetAllProjectsAsync(bool trackChanges) =>
-			await FindAll(trackChanges)
-					.OrderBy(t => t.EndDate)
-					.ToListAsync();
-
 		public async Task<IEnumerable<Project>> GetAllProjectsWithDetailsAsync(bool trackChanges) =>
 			await FindAll(trackChanges)
 					.Include(p => p.Manager)

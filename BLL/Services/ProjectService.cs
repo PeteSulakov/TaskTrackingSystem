@@ -57,7 +57,7 @@ namespace BLL.Services
 
 		public async Task<IEnumerable<ReadProjectDto>> GetAllAsync()
 		{
-			var projects = await _unitOfWork.ProjectRepository.GetAllProjectsAsync(false);
+			var projects = await _unitOfWork.ProjectRepository.GetAllProjectsWithDetailsAsync(false);
 			return _mapper.Map<IEnumerable<ReadProjectDto>>(projects);
 		}
 

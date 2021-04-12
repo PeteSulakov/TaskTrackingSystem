@@ -22,10 +22,6 @@ namespace DAL.Repositories
 					.OrderBy(t => t.DeadLine)
 					.ToListAsync();
 
-		public async Task<IEnumerable<Entities.Task>> GetAllTasksAsync(bool trackChanges) =>
-			await FindAll(trackChanges)
-					.OrderBy(t => t.DeadLine)
-					.ToListAsync();
 
 		public async Task<Entities.Task> GetTaskByIdWithDetailsAsync(int id, bool trackChanges) =>
 			await FindByCondition(t => t.Id == id, trackChanges)

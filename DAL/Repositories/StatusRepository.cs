@@ -14,15 +14,10 @@ namespace DAL.Repositories
 		public StatusRepository(TaskDbContext context)
 			: base(context)
 		{ }
-		public async Task<IEnumerable<Status>> GetAllStatusesAsync(bool trackChanges) =>
-			await FindAll(trackChanges)
-					.OrderBy(s=>s.Id)
-					.ToListAsync();
 
 		public async Task<IEnumerable<Status>> GetAllStatusesWithDetailsAsync(bool trackChanges) =>
 			await FindAll(trackChanges)
 					.Include(s => s.Tasks)
-					.OrderBy(s => s.Id)
 					.ToListAsync();
 
 		public async Task<Status> GetStatusByIdWithDetailsAsync(int id, bool trackChanges) =>
