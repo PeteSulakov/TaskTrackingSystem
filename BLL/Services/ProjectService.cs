@@ -104,7 +104,7 @@ namespace BLL.Services
 															.Include(t => t.Status)
 															.Include(t => t.Project)
 															.ThenInclude(p => p.Manager)
-															.FirstAsync();
+															.FirstOrDefaultAsync();
 			if (task == null)
 				throw new TaskException($"Can't find task with id = {taskId}", HttpStatusCode.NotFound);
 			if (task.Project.ManagerId != managerId)
