@@ -132,6 +132,7 @@ namespace WebApi.Controllers
 		/// <param name="updateTaskDto"></param>
 		/// <returns></returns>
 		[HttpPut("{taskId}")]
+		[ServiceFilter(typeof(ValidationFilterAttribute))]
 		public async Task<ActionResult<ReadProjectDto>> Update(int taskId, [FromBody] UpdateTaskDto  updateTaskDto)
 		{
 			var managerId = _userManager.GetUserId(User);

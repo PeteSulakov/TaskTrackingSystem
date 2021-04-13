@@ -109,6 +109,7 @@ namespace WebApi.Controllers
 		/// <param name="projectDto"></param>
 		/// <returns></returns>
 		[HttpPost]
+		[ServiceFilter(typeof(ValidationFilterAttribute))]
 		public async Task<ActionResult<ReadProjectDto>> Add([FromBody] CreateProjectDto projectDto)
 		{
 			var managerId = _userManager.GetUserId(User);
@@ -122,6 +123,7 @@ namespace WebApi.Controllers
 		/// <param name="updateProjectDto"></param>
 		/// <returns></returns>
 		[HttpPut("{projectId}")]
+		[ServiceFilter(typeof(ValidationFilterAttribute))]
 		public async Task<ActionResult<ReadProjectDto>> Update(int projectId, [FromBody] UpdateProjectDto updateProjectDto)
 		{
 			var managerId = _userManager.GetUserId(User);

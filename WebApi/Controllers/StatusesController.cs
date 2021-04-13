@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebApi.ActionFilters;
 
 namespace WebApi.Controllers
 {
@@ -34,6 +35,7 @@ namespace WebApi.Controllers
 		/// <param name="createStatusDto"></param>
 		/// <returns></returns>
 		[HttpPost, Authorize(Roles = "Administrator")]
+		[ServiceFilter(typeof(ValidationFilterAttribute))]
 		public async Task<ActionResult<ReadStatusDto>> Add([FromBody] CreateStatusDto createStatusDto)
 		{
 			try
@@ -84,6 +86,7 @@ namespace WebApi.Controllers
 		/// <param name="createStatusDto"></param>
 		/// <returns></returns>
 		[HttpPut("{statusId}"), Authorize(Roles = "Administrator")]
+		[ServiceFilter(typeof(ValidationFilterAttribute))]
 		public async Task<ActionResult<ReadStatusDto>> Update(int statusId, [FromBody] CreateStatusDto createStatusDto)
 		{
 			try
